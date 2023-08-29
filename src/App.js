@@ -16,11 +16,15 @@ const App = () => {
   useEffect(() => {
     getQuotes()
   }, []);
+
+  const Author = Quotes.author;
+  const authorName = Author && Author.includes(',') ? Author.substring(0, Author.indexOf(',')) : Author;
+
   return (
     <div className='App'>
     <div className="quote">
     <p>{Quotes.text}</p>
-    <p>Author: {Quotes.author}</p>
+    <p>Author: {authorName}</p>
     <div className="btnContainer">
     <button onClick={getQuotes} className="btn">Get Quote</button>
     <a href={`https://twitter.com/intent/tweet?text=${Quotes.text}`} target="_blank" className="btn">tweet</a>
